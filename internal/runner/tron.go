@@ -72,9 +72,11 @@ func (t *TronRunner) Handler() {
 		data, err := t.client.GetBlockByNum(blocksnum)
 		if err != nil {
 			logger.ErrorLogger.Error("波场获取区块信息失败 error", zap.Error(err), zap.String("chain", t.conf.Name), zap.Int("blocksnum", blocksnum))
-			if strings.Contains(err.Error(), "unexpected end of JSON input") {
-				t.chBlock <- blocksnum
-			}
+			go func() {
+				if strings.Contains(err.Error(), "unexpected end of JSON input") {
+					t.chBlock <- blocksnum
+				}
+			}()
 			continue
 
 		}

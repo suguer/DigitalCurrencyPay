@@ -7,6 +7,7 @@ import (
 	"DigitalCurrency/internal/model/cache"
 	"fmt"
 	"math"
+	"strings"
 	"time"
 
 	"go.uber.org/zap"
@@ -68,6 +69,12 @@ func (t *EthRunner) Handler() {
 		elogs, err := t.client.GetLogsFormat(blocksnum, blocksnum)
 		if err != nil {
 			t.logger.Error("获取区块信息失败 error", zap.Error(err), zap.String("chain", t.conf.Name))
+			go func() {
+				if strings.Contains(err.Error(), "Too Many Requests") {
+					t.chBlock <- blocksnum
+				}
+			}()
+
 			continue
 		}
 		activeCount := 0
