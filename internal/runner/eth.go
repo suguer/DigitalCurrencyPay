@@ -70,7 +70,7 @@ func (t *EthRunner) Handler() {
 		if err != nil {
 			t.logger.Error("获取区块信息失败 error", zap.Error(err), zap.String("chain", t.conf.Name))
 			go func() {
-				if strings.Contains(err.Error(), "Too Many Requests") {
+				if strings.Contains(err.Error(), "Too Many Requests") || strings.Contains(err.Error(), "over rate limit") {
 					t.chBlock <- blocksnum
 				}
 			}()
