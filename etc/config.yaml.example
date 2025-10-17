@@ -1,0 +1,96 @@
+salt: ZmUbqPipJ0Pr7tGmkHDBazjpbKjFZc7S
+# 服务配置
+server:
+  # 服务端口
+  port: 8080
+  # 服务模式 (development/production)
+  mode: development
+
+redis:
+  host: localhost
+  port: 6379
+  password: ""
+  database: 10
+
+blockchain:
+  ethereum:
+    name: "ethereum"
+    key: "4NWYU4VBBMEKKNKCCZM9GEU2GZRKAJVVW1"
+    enable: 1
+    node: https://api-sepolia.etherscan.io/api
+    precision: 6
+    grpc_address: https://ethereum-sepolia-rpc.publicnode.com
+    chain_id: 1
+  op:
+    name: "op"
+    key: "4NWYU4VBBMEKKNKCCZM9GEU2GZRKAJVVW1"
+    enable: 1
+    node: https://api.etherscan.io/v2/api
+    precision: 6
+    grpc_address: https://optimism.publicnode.com
+    chain_id: 10
+  base:
+    name: "base"
+    key: "4NWYU4VBBMEKKNKCCZM9GEU2GZRKAJVVW1"
+    enable: 1
+    node: https://api.etherscan.io/v2/api
+    precision: 6
+    grpc_address: https://mainnet.base.org
+    chain_id: 8453
+  matic:
+    name: "matic"
+    key: ""
+    enable: 1
+    node:  https://api.etherscan.io/v2/api
+    precision: 6
+    grpc_address: https://rpc-mainnet.matic.quiknode.pro
+    chain_id: 0
+  avax:
+    name: "avax"
+    key: ""
+    enable: 1
+    node:  https://api.etherscan.io/v2/api
+    precision: 6
+    grpc_address: https://api.avax.network/ext/bc/C/rpc
+    chain_id: 0
+  arbitrum:
+    name: "arbitrum"
+    key: "4NWYU4VBBMEKKNKCCZM9GEU2GZRKAJVVW1"
+    enable: 1
+    node:  https://api.etherscan.io/v2/api
+    precision: 6
+    grpc_address: https://arb1.arbitrum.io/rpc
+    chain_id: 42161
+  tron:
+    name: "tron"
+    key: ""
+    enable: 1
+    node: https://api.trongrid.io
+    precision: 18
+    grpc_address: grpc.trongrid.io:50051
+  tron-shasta:
+    name: "tron-shasta"
+    key: ""
+    enable: 1
+    node: https://api.shasta.trongrid.io
+    precision: 18
+    grpc_address: grpc.shasta.trongrid.io:50051
+
+queue:
+  driver: chan
+
+database:
+  driver: sqllite
+  sqllite:
+    path: ./database/cpay.db
+  mysql:
+    host: 127.0.0.1
+    port: 3306
+    username: root
+    password: root
+    database: digitalcurrency
+    charset: utf8mb4
+    
+storage:
+  path: ./storage/
+  log: ./storage/log/
