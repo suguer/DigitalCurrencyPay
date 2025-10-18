@@ -6,6 +6,8 @@ import (
 	"strings"
 
 	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/gagliardetto/solana-go"
+	"github.com/mr-tron/base58"
 )
 
 func HexString2Address(hex string) (string, error) {
@@ -32,6 +34,13 @@ func Generate() (address string, key string, err error) {
 	address = walletAddress.Hex()
 	key = hex.EncodeToString(privateKeyBytes)
 	return address, key, nil
+}
+
+func GenerateSolana() (address string, key string, err error) {
+	account := solana.NewWallet()
+	privateKeyBytes := account.PrivateKey
+	base58String := base58.Encode(privateKeyBytes)
+	return account.PublicKey().String(), base58String, nil
 }
 
 func MatchAddress(addr1, addr2 string) bool {
