@@ -11,6 +11,7 @@ const (
 	ChainBase       = "base"
 	ChainOp         = "op"
 	ChainEthereum   = "ethereum"
+	ChainPolygon    = "polygon"
 )
 
 const (

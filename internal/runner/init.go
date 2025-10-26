@@ -38,5 +38,8 @@ func InitRunner(ctx context.Context) {
 		service := NewEthereumRunner(ctx, &config.Conf.BlockChain.Ethereum)
 		go service.Start(0)
 	}
-
+	if config.Conf.BlockChain.Polygon.Enable == 1 {
+		service := NewPolygonRunner(ctx, &config.Conf.BlockChain.Polygon)
+		go service.Start(0)
+	}
 }

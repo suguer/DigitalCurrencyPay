@@ -37,6 +37,15 @@ blockchain:
     precision: 6
     grpc_address: https://mainnet.base.org
     chain_id: 8453
+    
+  polygon:
+    name: "polygon"
+    key: "4NWYU4VBBMEKKNKCCZM9GEU2GZRKAJVVW1"
+    enable: 1
+    node: https://api.etherscan.io/v2/api
+    precision: 6
+    grpc_address: https://polygon-bor-rpc.publicnode.com
+    chain_id: 137
   matic:
     name: "matic"
     key: ""

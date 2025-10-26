@@ -17,6 +17,7 @@ var MaticLogger *zap.Logger
 var BaseLogger *zap.Logger
 var OpLogger *zap.Logger
 var EthereumLogger *zap.Logger
+var PolygonLogger *zap.Logger
 
 func InitLogger(conf config.StorageConfig) {
 	factory := NewLoggerFactory(conf)
@@ -30,4 +31,5 @@ func InitLogger(conf config.StorageConfig) {
 	BaseLogger = factory.GetLogger(constant.ChainBase)
 	OpLogger = factory.GetLogger(constant.ChainOp)
 	EthereumLogger = factory.GetLogger(constant.ChainEthereum)
+	PolygonLogger = factory.GetLogger(constant.ChainPolygon)
 }

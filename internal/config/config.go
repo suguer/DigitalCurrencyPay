@@ -60,6 +60,7 @@ type Config struct {
 		Base       EthConfig `yaml:"base"`
 		Op         EthConfig `yaml:"op"`
 		Ethereum   EthConfig `yaml:"ethereum"`
+		Polygon    EthConfig `yaml:"polygon"`
 	} `yaml:"blockchain"`
 
 	Redis    RedisConf

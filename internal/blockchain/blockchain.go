@@ -40,13 +40,12 @@ func NewBlockchain(ctx context.Context, conf *config.EthConfig) *Blockchain {
 	httpClient := &http.Client{
 		Timeout: time.Second * 30,
 		// 设置代理
-		Transport: &http.Transport{
-			Proxy: http.ProxyURL(&url.URL{
-				Scheme: "http",
-				Host:   "10.0.5.124:45613",
-				// Host:   "127.0.0.1:1080",
-			}),
-		},
+		// Transport: &http.Transport{
+		// 	Proxy: http.ProxyURL(&url.URL{
+		// 		Scheme: "http",
+		// 		Host:   "127.0.0.1:1080",
+		// 	}),
+		// },
 	}
 	return &Blockchain{
 		Chain:      conf.Name,
